@@ -6,9 +6,9 @@ import { apiOptions } from "./constants";
 
 const main = async () => {
   console.log("Running ");
+  //The following 10 lines of code are purely for logging purposes
   console.log(
     "Making a get request to URL: ",
-
     // _constructUrl("products", apiOptions, O.some("1"), O.none)
     _constructUrl(
       "products",
