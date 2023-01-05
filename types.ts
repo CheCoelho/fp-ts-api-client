@@ -1,3 +1,4 @@
+import { category } from "fp-ts";
 import "lib.dom.d.ts";
 
 export interface APIOptions {
@@ -13,10 +14,11 @@ export interface TokenData {
   refresh: string;
 }
 export type ItemID = string; //Create a export type that extends all possible ids
+export type Category = "smartphones";
 export type RouteOptions = "products";
 export type ApiMethod = "GET" | "POST";
-export type Params = Record<ParamsKey, ItemID>;
-export type ParamsKey = "product_id";
+export type Params = Record<ParamsKey, Category>;
+export type ParamsKey = "category";
 
 export type RequestInit = {
   method: string;

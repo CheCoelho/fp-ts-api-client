@@ -8,12 +8,24 @@ const main = async () => {
   console.log("Running ");
   console.log(
     "Making a get request to URL: ",
-    //Set the route and the produce ID below. The last argument to the
-    //_constructUrl function is for query params
-    _constructUrl("products", apiOptions, O.some("1"), O.none)
+
+    // _constructUrl("products", apiOptions, O.some("1"), O.none)
+    _constructUrl(
+      "products",
+      apiOptions,
+      O.none,
+      O.some({ category: "smartphones" })
+    )
   );
   const rawRes = pipe(
+    //Set the route and the produce ID below. The last argument to the
+    //_constructUrl function is for query param
+
+    //To get a product with a specific ID
     get("products", apiOptions, O.some("p"), O.none),
+
+    //To get a list of products that matches the query params
+    // get("products", apiOptions, O.none, O.some({ category: "smartphones" })),
     TE.chain((response) => TE.right(response.data))
   );
   console.log("Printing data from response: ", await rawRes());
