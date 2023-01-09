@@ -11,13 +11,11 @@ export const getProduct = async (id: ItemID) => {
     _get("products", apiOptions, O.some(id), O.none),
     TE.chain((response) => TE.right(response.data))
   )();
-
   console.log(await rawRes);
 };
 
 export const getProductList = async (params: Params) => {
   console.log("Making a get request for a list of products");
-
   const rawRes = pipe(
     _get("products", apiOptions, O.none, O.some(params)),
     TE.chain((response) => TE.right(response.data))
@@ -27,7 +25,6 @@ export const getProductList = async (params: Params) => {
 
 export const createProduct = async (data: PostExample) => {
   console.log("Making a post request to create a product");
-
   const rawRes = pipe(
     _post("products/add", apiOptions, data),
     TE.chain((response) => TE.right(response.data))
@@ -37,12 +34,10 @@ export const createProduct = async (data: PostExample) => {
 
 export const deleteProduct = async (id: ItemID) => {
   console.log("Making a delete request to a single product");
-
   const rawRes = pipe(
     _delete("products", apiOptions, O.some(id)),
     TE.chain((response) => TE.right(response.data))
   )();
-
   console.log(await rawRes);
 };
 
